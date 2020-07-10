@@ -16,15 +16,13 @@ def binary_search(arr, target):
 
     start_index = 0
     end_index= len(arr)-1
-    found = False
-    while not found:
-        mid = floor((start_index + end_index)/2)
+    while start_index <= end_index:
+        mid = (start_index + end_index)//2
         if arr[mid] == target:
-            found = True
             return mid
+
+        elif arr[mid] > target:
+            end_index = mid-1
         else:
-            if arr[mid] > target:
-                end_index = mid-1
-            if arr[mid] < target:
-                start_index = mid+1
-        return -1  # not found
+            start_index = mid+1
+    return -1  # not found
